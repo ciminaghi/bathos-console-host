@@ -1,0 +1,26 @@
+This is a tool which uses a Saleae logic8 logic analyzer to decode and display
+the output of the bathos-mcuio debug console port.
+Code comes from ConsoleDemo.cpp, included in the SaleaeDeviceSdk-1.1.14 sdk.
+
+To build (under linux):
+
+   * Download SaleaeDeviceSdk-1.1.14 (it is __not__ free software,
+     unfortunately).
+   * Untar the sdk somewhere (we'll call SDK the path to SaleaeDeviceSdk-1.1.14
+     from now on).
+   * Clone this repository.
+   * Build:
+
+		make SDK=<path_to_your_sdk>
+
+   By default, libSaleaeDevice64.so is used, switch to libSaleaeDevice.so
+   if needed (add a LIBSALEAE=-lSaleaeDevice on make cmdline).
+
+   * Connect wire 0 (black) of the logic analyzer to IO9 on the arduino shield
+     of the arduino yun board.
+   * Connect wire 1 (brown) to IO8.
+   * Connect the ground wire of the logic analyzer to a convenient ground pin.
+
+Run bathos_console, making sure that libSaleaeDevice[64].so can be seen by the
+dynamic linker (user LD_LIBRARY_PATH or copy the library to the proper place,
+or run ldconfig ...).
